@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static\static.css"/>
+    <script>
+        function redirect(){
+            term = document.getElementById("inputBox").value
+            if(term === ""){
+                alert("Please type in a search term first")
+            }
+            else{
+                term = term.replace(/ /g,"~")
+                window.location.href = '/'+term;
+            }
+        }
+    </script>
+    <title>
+        OpinionBot
+    </title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>
+            Opinion Bot
+        </h1>
+    </div>
+    <br>
+    <div class ="boxes">
+    <input id="inputBox" placeholder="Enter Search Term" style="width: 40%;padding:5px;">
+    <br>
+    <br>
+    <button onclick="redirect()" style="background-color: #1DA1F2; width: 40%;padding-top: 5px;padding-bottom:5px;border-color: #198acf;border-radius: 8px;">
+        <a style="color: white;">
+            Check Sentiment
+        </a>
+    </button>
+    </div>
+    <div class="textBox" style="width: 40%; position: absolute;;left: 30%; bottom: 5%;">
+        <div class="text">
+            This bot gathers recent tweets on the given search term and analyses the sentiment from them, this gives an idea
+            of the ways in which people are discussing a topic. Please keep in mind that a low score does not directly mean that
+            search term is viewed negatively just that the themes discussed may be negative.
+        </div>
+    </div>
+</body>
+</html>

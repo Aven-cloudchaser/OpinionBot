@@ -1,0 +1,103 @@
+<html>
+<head>
+    <link rel="stylesheet" href="static\static.css"/>
+    <title>
+        Results
+    </title>
+    <script>
+        function redirect() {
+            window.location.href = "/"
+        }
+        function clearLists() {
+            document.getElementById("posList").innerHTML = "";
+            alert("{{ pos }}")
+        }
+    </script>
+</head>
+<body>
+    <div class="header" onload="clearLists()">
+        <h1>
+            Opinion Bot
+        </h1>
+    </div>
+    <div>
+        <div class="column">
+            <ul id ="posList" style="background-color: #cfe2cf;">
+                {% for x in pos %}
+                    <li>{{ x }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="column">
+            <h1 style="text-align: center;">
+                <p id="sentiment" style ="text-align: center;">
+                    ---
+                </p>
+                Sentiment Score: {{ sent }}
+                <br>
+                <br>
+                <br>
+                <button onclick="redirect()" style="background-color: #1DA1F2; width: 25%;padding-top: 5px;padding-bottom:5px;border-color: #198acf;border-radius: 8px;">
+                    <a style="color: white;">
+                        Back
+                    </a>
+                </button>
+            </h1>
+            <div class="textBox"">
+                <div class="text" id="textBox">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <ul id ="negList"  style="background-color: #f1ccbf;">
+                {% for x in neg %}
+                    <li>{{ x }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+ 
+    
+    <script>
+        const neutralScript = "This means that out of the tweets pulled roughly the same amount of them were positive as were negative."
+        const positiveScript = "More of the tweets that were pulled were positive than negative, this topic is discussed in a mostly positive way."
+        const vPositiveScript = "A significant amount of the tweets pulled were positive, this topic is discussed in a quite positive manner."
+        const oPositiveScript = "An overwhelming majority of the tweets pulled were positive, this means that this topic is most likely liked by the people tweeting about it."
+        const negitiveScript = "More of the tweets that were pulled were negative than positive, this topic is discussed in a mostly negative way. (this does not necessarily mean the topic is disliked)"
+        const vNegitiveScript = "A significant amount of the tweets pulled were negative, this topic is discussed in a quite negative manner.(this does not necessarily mean the topic is disliked)"
+        const oNegitiveScript = "An overwhelming majority of the tweets pulled were negative, this means that this topic is most likely disliked by the people tweeting about it."
+        const sent = parseInt("{{ sent }}")
+        switch(sent) {
+                case 0:
+                    document.getElementById("sentiment").innerHTML = "Neutral";
+                    document.getElementById("textBox").innerHTML = neutralScript;
+                    break;
+                case 1:
+                    document.getElementById("sentiment").innerHTML = "Positve";
+                    document.getElementById("textBox").innerHTML = positiveScript;
+                    break;
+                case 2:
+                    document.getElementById("sentiment").innerHTML = "Very positive";
+                    document.getElementById("textBox").innerHTML = vPositiveScript;
+                    break;
+                case 3:
+                    document.getElementById("sentiment").innerHTML = "Overwhelmingly positive";
+                    document.getElementById("textBox").innerHTML = oPositiveScript;
+                    break;
+                case -1:
+                    document.getElementById("sentiment").innerHTML = "Negative";
+                    document.getElementById("textBox").innerHTML = negitiveScript;
+                    break;
+                case -2:
+                    document.getElementById("sentiment").innerHTML = "Very negative";
+                    document.getElementById("textBox").innerHTML = vNegitiveScript;
+                    break;
+                case -3:
+                    document.getElementById("sentiment").innerHTML = "Overwhelmingly negative"
+                    document.getElementById("textBox").innerHTML = oNegitiveScript;
+                    break;
+            }
+    </script>
+</body>
+
+</html>

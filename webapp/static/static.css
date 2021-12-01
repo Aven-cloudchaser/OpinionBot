@@ -1,0 +1,44 @@
+body {
+    background-color: #E6F4F1;
+}
+
+
+
+.header {
+    padding:0.01%;
+    text-align: center;
+    background: #1DA1F2;
+    color: white;
+    font-size: 30px;
+}
+
+.pallette {
+    color: #1DA1F2;
+    color: #E6F4F1;
+}
+
+.boxes {
+    text-align: center;
+}
+
+.textBox {
+    text-align: left;
+    position: relative;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #1DA1F2;
+    background-color: #F2FAFF;
+}
+
+
+.text {
+    text-align-last: auto;
+    margin: 1%;
+    font-size: 20px;
+}
+
+.column {
+    width: 30%;
+    padding-right: 3.3333%;
+    float: left;
+}
