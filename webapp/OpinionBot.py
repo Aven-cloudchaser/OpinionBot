@@ -28,7 +28,7 @@ api = tweepy.API(auth)
 
 # Get Tweet data to dashboard
 def analyseTweets(searchQuery):
-    if searchQuery == "favicon.ico":
+    if searchQuery == "favicon.ico": # not sure why but this kept getting run
         return None
     else:
         print(searchQuery)
